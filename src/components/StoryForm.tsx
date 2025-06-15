@@ -20,7 +20,6 @@ interface FormData {
   thematicVocabulary: boolean;
   readingStrategies: boolean;
   primaryCompetence: string;
-  secondaryCompetences: string[];
   transversalApproaches: string[];
 }
 
@@ -37,7 +36,6 @@ const StoryForm = () => {
     thematicVocabulary: false,
     readingStrategies: false,
     primaryCompetence: '',
-    secondaryCompetences: [],
     transversalApproaches: []
   });
 
@@ -94,15 +92,6 @@ const StoryForm = () => {
     e.preventDefault();
     console.log('Generating story with data:', formData);
     // Aquí se implementaría la lógica de generación del cuento
-  };
-
-  const handleSecondaryCompetenceChange = (competence: string, checked: boolean) => {
-    setFormData(prev => ({
-      ...prev,
-      secondaryCompetences: checked 
-        ? [...prev.secondaryCompetences, competence]
-        : prev.secondaryCompetences.filter(c => c !== competence)
-    }));
   };
 
   const handleTransversalApproachChange = (approach: string, checked: boolean) => {
@@ -244,27 +233,6 @@ const StoryForm = () => {
                     ))}
                   </SelectContent>
                 </Select>
-              </div>
-
-              {/* Competencias Secundarias */}
-              <div className="space-y-3">
-                <Label className="text-sm font-medium text-gray-700">Competencias Secundarias</Label>
-                <div className="space-y-2 max-h-40 overflow-y-auto border border-gray-200 rounded-md p-3">
-                  {competences.map(competence => (
-                    <div key={competence} className="flex items-start space-x-2">
-                      <Checkbox
-                        id={`secondary-${competence}`}
-                        checked={formData.secondaryCompetences.includes(competence)}
-                        onCheckedChange={(checked) => 
-                          handleSecondaryCompetenceChange(competence, checked as boolean)
-                        }
-                      />
-                      <Label htmlFor={`secondary-${competence}`} className="text-xs text-gray-700 leading-relaxed">
-                        {competence}
-                      </Label>
-                    </div>
-                  ))}
-                </div>
               </div>
 
               {/* Enfoques Transversales */}
