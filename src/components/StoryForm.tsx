@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,7 +10,7 @@ import { BookOpen, Wand2 } from 'lucide-react';
 
 interface FormData {
   title: string;
-  genre: string;
+  educationalContext: string;
   pages: string;
   gradeLevel: string;
   characters: string;
@@ -28,7 +27,7 @@ interface FormData {
 const StoryForm = () => {
   const [formData, setFormData] = useState<FormData>({
     title: '',
-    genre: '',
+    educationalContext: '',
     pages: '',
     gradeLevel: '',
     characters: '',
@@ -42,15 +41,15 @@ const StoryForm = () => {
     transversalApproaches: []
   });
 
-  const genres = [
-    'Aventura',
-    'Fantasía',
-    'Misterio',
-    'Ciencia Ficción',
-    'Fábula',
-    'Cuento Popular',
-    'Biografía',
-    'Histórico'
+  const educationalContexts = [
+    'Valores y convivencia escolar',
+    'Diversidad cultural e inclusión',
+    'Cuidado del medio ambiente',
+    'Desarrollo de la identidad personal',
+    'Resolución de problemas cotidianos',
+    'Promoción de la igualdad de género',
+    'Fortalecimiento de la democracia',
+    'Desarrollo del pensamiento crítico'
   ];
 
   const gradeLevels = [
@@ -68,7 +67,7 @@ const StoryForm = () => {
     'Secundaria 5° (16 años)'
   ];
 
-  const pageOptions = ['1-5 páginas', '6-10 páginas', '11-15 páginas', '16-20 páginas', '21+ páginas'];
+  const pageOptions = ['1 página', '2 páginas', '3 páginas', '4 páginas', '5 páginas'];
 
   const competences = [
     'Lee diversos tipos de textos escritos en su lengua materna',
@@ -143,17 +142,17 @@ const StoryForm = () => {
                 <p className="text-xs text-gray-500">Una breve idea sobre tu cuento.</p>
               </div>
 
-              {/* Género y Páginas */}
+              {/* Contexto Educativo y Páginas */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label className="text-sm font-medium text-gray-700">Género</Label>
-                  <Select value={formData.genre} onValueChange={(value) => setFormData({...formData, genre: value})}>
+                  <Label className="text-sm font-medium text-gray-700">Contexto Educativo</Label>
+                  <Select value={formData.educationalContext} onValueChange={(value) => setFormData({...formData, educationalContext: value})}>
                     <SelectTrigger className="border-blue-200">
-                      <SelectValue placeholder="Selecciona un género" />
+                      <SelectValue placeholder="Selecciona el contexto" />
                     </SelectTrigger>
                     <SelectContent>
-                      {genres.map(genre => (
-                        <SelectItem key={genre} value={genre}>{genre}</SelectItem>
+                      {educationalContexts.map(context => (
+                        <SelectItem key={context} value={context}>{context}</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
