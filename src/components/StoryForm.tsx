@@ -13,7 +13,6 @@ interface FormData {
   educationalContext: string;
   pages: string;
   gradeLevel: string;
-  characters: string;
   literalComprehension: boolean;
   inferentialComprehension: boolean;
   criticalComprehension: boolean;
@@ -29,7 +28,6 @@ const StoryForm = () => {
     educationalContext: '',
     pages: '',
     gradeLevel: '',
-    characters: '',
     literalComprehension: false,
     inferentialComprehension: false,
     criticalComprehension: false,
@@ -175,22 +173,6 @@ const StoryForm = () => {
                     ))}
                   </SelectContent>
                 </Select>
-              </div>
-
-              {/* Personajes */}
-              <div className="space-y-2">
-                <Label htmlFor="characters" className="text-sm font-medium text-gray-700">
-                  Personajes (Opcional)
-                </Label>
-                <Textarea
-                  id="characters"
-                  placeholder="Ej: Un valiente conejo, una ardilla sabia, un lobo misterioso"
-                  value={formData.characters}
-                  onChange={(e) => setFormData({...formData, characters: e.target.value})}
-                  className="border-blue-200 focus:border-blue-400 resize-none"
-                  rows={3}
-                />
-                <p className="text-xs text-gray-500">Describe brevemente los personajes principales.</p>
               </div>
 
               {/* Habilidades Específicas */}
